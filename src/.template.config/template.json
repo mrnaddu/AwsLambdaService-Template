@@ -1,0 +1,16 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Nadeem",
+    "classifications": ["AWS Lambda", "Microservice" , ".NET", "C#"],
+    "identity": "Aws.Lambda.Solution.CSharp",
+    "sourceName": "AwsLambda",
+    "name": "A Solution Template for ASP.NET Core and Aws Lambda",
+    "groupIdentity": "Aws.Lambda.Solution",
+    "description": "An ASP.NET Core AWS Microservice Template",
+    "tags": {
+      "language": "C#",
+      "type": "solution"
+    },
+    "shortName": "cl-aws",
+    "preferNameDirectory": true
+}

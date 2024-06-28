@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <PackageType>Template</PackageType>
+        <Version>0.0.2</Version>
+        <TargetFramework>net8.0</TargetFramework>
+        <PackageId>Nadeem.Aws.Lambda.Template</PackageId>
+        <Title>A Solution Template for ASP.NET Core and Aws Lambda</Title>
+        <Authors>Nadeem</Authors>
+        <Description>A Solution Template for ASP.NET Core and Aws Lambda</Description>
+        <PackageTags>abp;microservice;dotnet-new;templates</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <IncludeContentInPack>true</IncludeContentInPack>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <NoDefaultExcludes>true</NoDefaultExcludes>
+        <PackageReadmeFile>readme.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Remove="**\*" />
+        <Content Include="src\**\*" Exclude="src\**\bin\**;src\**\obj\**" />
+        <Content Include="readme.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+</Project>

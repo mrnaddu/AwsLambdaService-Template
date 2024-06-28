@@ -1,0 +1,77 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Transform": "AWS::Serverless-2016-10-31",
+  "Description": "Starting template for an AWS Serverless Application. This template is partially managed by Amazon.Lambda.Annotations (v1.3.0.0).",
+  "Parameters": {},
+  "Resources": {
+    "AwsLambdaLambdaFunctionsGetSampleAsyncHandlerGenerated": {
+      "Type": "AWS::Serverless::Function",
+      "Metadata": {
+        "Tool": "Amazon.Lambda.Annotations"
+      },
+      "Properties": {
+        "Runtime": "dotnet8",
+        "CodeUri": ".",
+        "MemorySize": 512,
+        "Timeout": 30,
+        "Policies": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "PackageType": "Zip",
+        "Handler": "AwsLambda.Lambda::AwsLambda.Lambda.Functions_GetSampleAsyncHandler_Generated::GetSampleAsyncHandler"
+      }
+    },
+    "AwsLambdaLambdaFunctionsCreateSampleAsyncHandlerGenerated": {
+      "Type": "AWS::Serverless::Function",
+      "Metadata": {
+        "Tool": "Amazon.Lambda.Annotations"
+      },
+      "Properties": {
+        "Runtime": "dotnet8",
+        "CodeUri": ".",
+        "MemorySize": 512,
+        "Timeout": 30,
+        "Policies": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "PackageType": "Zip",
+        "Handler": "AwsLambda.Lambda::AwsLambda.Lambda.Functions_CreateSampleAsyncHandler_Generated::CreateSampleAsyncHandler"
+      }
+    },
+    "AwsLambdaLambdaFunctionsGetAllSampleHandlerGenerated": {
+      "Type": "AWS::Serverless::Function",
+      "Metadata": {
+        "Tool": "Amazon.Lambda.Annotations"
+      },
+      "Properties": {
+        "Runtime": "dotnet8",
+        "CodeUri": ".",
+        "MemorySize": 512,
+        "Timeout": 30,
+        "Policies": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "PackageType": "Zip",
+        "Handler": "AwsLambda.Lambda::AwsLambda.Lambda.Functions_GetAllSampleHandler_Generated::GetAllSampleHandler"
+      }
+    },
+    "AwsLambdaLambdaFunctionsUpdateSampleHandlerGenerated": {
+      "Type": "AWS::Serverless::Function",
+      "Metadata": {
+        "Tool": "Amazon.Lambda.Annotations"
+      },
+      "Properties": {
+        "Runtime": "dotnet8",
+        "CodeUri": ".",
+        "MemorySize": 512,
+        "Timeout": 30,
+        "Policies": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "PackageType": "Zip",
+        "Handler": "AwsLambda.Lambda::AwsLambda.Lambda.Functions_UpdateSampleHandler_Generated::UpdateSampleHandler"
+      }
+    }
+  },
+  "Outputs": {}
+}

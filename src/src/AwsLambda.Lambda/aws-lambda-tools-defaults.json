@@ -12,6 +12,6 @@
     "s3-prefix"     : "billpayservice.lambda/",
     "template"      : "serverless.template",
     "template-parameters" : "",
-    "s3-bucket"           : "dev-billpayservice-lambda-bucket",
-    "stack-name"          : "dev-billpayservice-lambda-stack"
+    "s3-bucket"           : "dev-billpayservice-lambda-bucket",// eg. dev-billpayservice-lambda-bucket,
+    "stack-name"          : "dev-billpayservice-lambda-stack" // eg. dev-billpayservice-lambda-stack
 }

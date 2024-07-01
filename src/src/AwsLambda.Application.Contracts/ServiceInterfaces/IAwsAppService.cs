@@ -1,6 +1,6 @@
-﻿namespace AwsLambda.Application.Interfaces;
+﻿namespace AwsLambda.Application.Services;
 
-public interface IAwsHelper
+public interface IAwsAppService
 {
     string GetRdsDatabaseConnectionString();
     string GetDocumentDatabaseConnectionString();

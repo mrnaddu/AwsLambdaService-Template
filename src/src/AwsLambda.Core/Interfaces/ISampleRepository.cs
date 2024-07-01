@@ -1,6 +1,6 @@
 ﻿using AwsLambda.Core.Entities;
 
-namespace AwsLambda.Application.Interfaces;
+namespace AwsLambda.Core.Interfaces;
 
 public interface ISampleRepository : IGenericRepository<Sample>
 {

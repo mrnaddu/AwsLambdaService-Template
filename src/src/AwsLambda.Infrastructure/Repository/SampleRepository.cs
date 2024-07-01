@@ -1,5 +1,4 @@
-﻿using AwsLambda.Application.Interfaces;
-using AwsLambda.Core.Entities;
+﻿using AwsLambda.Core.Entities;
 using Dapper;
 using MySql.Data.MySqlClient;
 
@@ -7,8 +6,8 @@ namespace AwsLambda.Infrastructure.Repository;
 
 public class SampleRepository : ISampleRepository
 {
-    private readonly IAwsHelper awsHelper;
-    public SampleRepository(IAwsHelper awsHelper)
+    private readonly IAwsAppService awsHelper;
+    public SampleRepository(IAwsAppService awsHelper)
     {
         this.awsHelper = awsHelper;
     }

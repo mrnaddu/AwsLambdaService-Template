@@ -1,5 +1,4 @@
-﻿using AwsLambda.Application.Interfaces;
-using AwsLambda.Core.Shared.Const;
+﻿using AwsLambda.Core.Shared.Const;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -7,8 +6,8 @@ namespace AwsLambda.Infrastructure.Repository;
 
 public class UserRepository : IUserRepository
 {
-    private readonly IAwsHelper awsHelper;
-    public UserRepository(IAwsHelper awsHelper)
+    private readonly IAwsAppService awsHelper;
+    public UserRepository(IAwsAppService awsHelper)
     {
         this.awsHelper = awsHelper;
     }

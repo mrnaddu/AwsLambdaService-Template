@@ -1,5 +1,4 @@
 ﻿using Amazon.Lambda.Annotations;
-using AwsLambda.Application.Interfaces;
 using AwsLambda.Infrastructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +11,7 @@ public class Startup
     {
         services.AddTransient<ISampleRepository, SampleRepository>();
         services.AddTransient<IUnitOfWork, UnitOfWork>();
-        services.AddTransient<IAwsHelper, AwsHelper>();
+        services.AddTransient<IAwsAppService, AwsHelper>();
         services.AddTransient<IUserRepository, UserRepository>();
     }
 }

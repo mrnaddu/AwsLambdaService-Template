@@ -8,10 +8,15 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Bson" Version="2.27.0" />
+	<PackageReference Include="AWSSDK.SecretsManager" Version="3.7.304.6" />
+	<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+	<PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
+	<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AwsLambda.Core\AwsLambda.Core.csproj" />
+    <ProjectReference Include="..\AwsLambda.Application.Contracts\AwsLambda.Application.Contracts.csproj" />
+    <ProjectReference Include="..\AwsLambda.Core.Shared\AwsLambda.Core.Shared.csproj" />
   </ItemGroup>
 
 </Project>

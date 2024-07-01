@@ -1,11 +1,11 @@
 ﻿using Amazon;
 using Amazon.SecretsManager;
 using Amazon.SecretsManager.Model;
-using AwsLambda.Application.Services;
+using AwsLambda.Application.ServiceInterfaces;
 using AwsLambda.Core.Shared.Const;
 using Newtonsoft.Json.Linq;
 
-namespace AwsLambda.Infrastructure.Repository;
+namespace AwsLambda.Application.Services;
 
 public class AwsHelper : IAwsAppService
 {

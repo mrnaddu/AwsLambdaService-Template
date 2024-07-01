@@ -1,6 +1,6 @@
 ﻿using MongoDB.Bson;
 
-namespace AwsLambda.Core.Interfaces;
+namespace AwsLambda.Core.RepositoryInterfaces;
 
 public interface IUserRepository
 {

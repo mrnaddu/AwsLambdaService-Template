@@ -1,6 +1,6 @@
 ﻿using AwsLambda.Core.Entities;
 
-namespace AwsLambda.Core.Dtos;
+namespace AwsLambda.Application.Contracts.Dtos;
 
 public class SampleResponseDto
 {

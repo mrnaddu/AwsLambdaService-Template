@@ -1,4 +1,4 @@
-﻿using AwsLambda.Core.Interfaces;
+﻿using AwsLambda.Core.RepositoryInterfaces;
 
 namespace AwsLambda.Infrastructure.Repository;
 

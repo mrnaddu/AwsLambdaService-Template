@@ -1,4 +1,4 @@
-﻿namespace AwsLambda.Application.Services;
+﻿namespace AwsLambda.Application.ServiceInterfaces;
 
 public interface IAwsAppService
 {

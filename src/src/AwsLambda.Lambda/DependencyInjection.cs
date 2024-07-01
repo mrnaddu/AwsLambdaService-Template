@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace AwsLambda.Lambda;
 
 [LambdaStartup]
-public class Startup
+public class DependencyInjection
 {
     public void ConfigureServices(IServiceCollection services)
     {

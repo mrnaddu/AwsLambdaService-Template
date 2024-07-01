@@ -1,4 +1,4 @@
-﻿namespace AwsLambda.Core.Interfaces;
+﻿namespace AwsLambda.Core.RepositoryInterfaces;
 
 public interface IGenericRepository<T> where T : class
 {

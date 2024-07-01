@@ -44,6 +44,15 @@ public class SampleRepository : ISampleRepository
         return result;
     }
 
+    public async Task<Sample> GetByNameAsync(string name)
+    {
+        var sql = "SELECT * FROM t_sample WHERE name = @name";
+        using var connection = new MySqlConnection(AwsHelper.GetRdsDatabaseConnectionString());
+        connection.Open();
+        var result = await connection.QuerySingleOrDefaultAsync<Sample>(sql, new { Name = name });
+        return result;
+    }
+
     public async Task<int> UpdateAsync(Sample entity)
     {
         var sql = "UPDATE t_sample SET name = @Name, age = @Age, email = @Email, WHERE id = @Id";

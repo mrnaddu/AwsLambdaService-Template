@@ -1,7 +1,5 @@
 using Amazon.Lambda.Annotations;
 using Amazon.Lambda.Core;
-using AwsLambda.Application.Interfaces;
-using AwsLambda.Core.Dtos;
 using AwsLambda.Core.Entities;
 using MongoDB.Bson;
 

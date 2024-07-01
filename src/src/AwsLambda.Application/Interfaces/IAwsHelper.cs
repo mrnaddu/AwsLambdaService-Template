@@ -3,4 +3,5 @@
 public interface IAwsHelper
 {
     string GetRdsDatabaseConnectionString();
+    string GetDocumentDatabaseConnectionString();
 }

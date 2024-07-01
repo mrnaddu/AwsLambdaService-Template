@@ -9,6 +9,40 @@ namespace AwsLambda.Infrastructure.Repository;
 
 public class AwsHelper : IAwsHelper
 {
+    public string GetDocumentDatabaseConnectionString()
+    {
+        GetSecretValueRequest request = new()
+        {
+            SecretId = AwsConst.DocSecretName,
+            VersionStage = AwsConst.Version,
+        };
+
+        using var secretsManagerClient = new AmazonSecretsManagerClient(RegionEndpoint.GetBySystemName(AwsConst.Region));
+
+        try
+        {
+            var response = secretsManagerClient.GetSecretValueAsync(request).Result;
+            string secret = response.SecretString;
+            JObject jsonObject = JObject.Parse(secret);
+
+            string username = (string)jsonObject["username"];
+            string password = (string)jsonObject["password"];
+            string host = (string)jsonObject["host"];
+            string port = (string)jsonObject["port"];
+            string dbName = (string)jsonObject["username"];
+            string authSource = (string)jsonObject["authSource"];
+            string authMechanism = (string)jsonObject["authMechanism"];
+
+            string connectionString = $"mongodb://{username}:{password}@{host}:{port}/{dbName}?authSource={AwsConst.Admin}&authMechanism={AwsConst.Mechanism}";
+
+            return connectionString;
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+
     public string GetRdsDatabaseConnectionString()
     {
         using var secretsManagerClient = new AmazonSecretsManagerClient(RegionEndpoint.GetBySystemName(AwsConst.Region));

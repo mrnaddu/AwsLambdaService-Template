@@ -1,4 +1,6 @@
-﻿using AwsLambda.Core.Entities;
+﻿using AwsLambda.Application.ServiceInterfaces;
+using AwsLambda.Core.Entities;
+using AwsLambda.Core.RepositoryInterfaces;
 using Dapper;
 using MySql.Data.MySqlClient;
 

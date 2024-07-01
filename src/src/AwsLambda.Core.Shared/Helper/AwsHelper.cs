@@ -1,15 +1,14 @@
 ﻿using Amazon;
 using Amazon.SecretsManager;
 using Amazon.SecretsManager.Model;
-using AwsLambda.Application.ServiceInterfaces;
 using AwsLambda.Core.Shared.Const;
 using Newtonsoft.Json.Linq;
 
-namespace AwsLambda.Application.Services;
+namespace AwsLambda.Core.Shared.Helper;
 
-public class AwsHelper : IAwsAppService
+public static class AwsHelper
 {
-    public string GetDocumentDatabaseConnectionString()
+    public static string GetDocumentDatabaseConnectionString()
     {
         GetSecretValueRequest request = new()
         {
@@ -43,7 +42,7 @@ public class AwsHelper : IAwsAppService
         }
     }
 
-    public string GetRdsDatabaseConnectionString()
+    public static string GetRdsDatabaseConnectionString()
     {
         using var secretsManagerClient = new AmazonSecretsManagerClient(RegionEndpoint.GetBySystemName(AwsConst.Region));
         var request = new GetSecretValueRequest

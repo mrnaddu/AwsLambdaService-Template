@@ -10,4 +10,8 @@
     <ProjectReference Include="..\AwsLambda.Core\AwsLambda.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ServiceInterfaces\" />
+  </ItemGroup>
+
 </Project>

@@ -71,6 +71,23 @@
         "PackageType": "Zip",
         "Handler": "AwsLambda.Lambda::AwsLambda.Lambda.Functions_UpdateSampleHandler_Generated::UpdateSampleHandler"
       }
+    },
+    "AwsLambdaLambdaFunctionsGetAllUserHandlerGenerated": {
+      "Type": "AWS::Serverless::Function",
+      "Metadata": {
+        "Tool": "Amazon.Lambda.Annotations"
+      },
+      "Properties": {
+        "Runtime": "dotnet8",
+        "CodeUri": ".",
+        "MemorySize": 512,
+        "Timeout": 30,
+        "Policies": [
+          "AWSLambdaBasicExecutionRole"
+        ],
+        "PackageType": "Zip",
+        "Handler": "AwsLambda.Lambda::AwsLambda.Lambda.Functions_GetAllUserHandler_Generated::GetAllUserHandler"
+      }
     }
   },
   "Outputs": {}

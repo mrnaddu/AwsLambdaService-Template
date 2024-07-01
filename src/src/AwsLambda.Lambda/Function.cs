@@ -3,6 +3,7 @@ using Amazon.Lambda.Core;
 using AwsLambda.Application.Interfaces;
 using AwsLambda.Core.Dtos;
 using AwsLambda.Core.Entities;
+using MongoDB.Bson;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -12,11 +13,16 @@ namespace AwsLambda.Lambda;
 public class Functions
 {
     private readonly ISampleRepository sampleRepository;
-    public Functions(ISampleRepository sampleRepository)
+    private readonly IUserRepository userRepository;
+    public Functions(
+        ISampleRepository sampleRepository,
+        IUserRepository userRepository)
     {
         this.sampleRepository = sampleRepository;
+        this.userRepository = userRepository;
     }
 
+    // RdsMysql
     [LambdaFunction]
     public async Task<SampleResponseDto> GetSampleAsyncHandler(string id, ILambdaContext context)
     {
@@ -70,6 +76,17 @@ public class Functions
         context.Logger.LogDebug($"Sending the response for New Sample Id {entity.Id}.");
         context.Logger.LogDebug($"updated the Sample and effected rows {rows}.");
         return rows;
+    }
+
+
+    // DocumentDb MongoDb 
+    [LambdaFunction]
+    public async Task<IEnumerable<BsonDocument>> GetAllUserHandler(ILambdaContext context)
+    {
+        context.Logger.LogDebug($"Received the request for Get All User.");
+
+        var usersList = await userRepository.GetAllUsers();
+        return usersList;
     }
 }
 

@@ -11,5 +11,6 @@ public static class DependencyInjection
         services.AddTransient<ISampleRepository, SampleRepository>();
         services.AddTransient<IUnitOfWork, UnitOfWork>();
         services.AddTransient<IAwsHelper, AwsHelper>();
+        services.AddTransient<IUserRepository, UserRepository>();
     }
 }

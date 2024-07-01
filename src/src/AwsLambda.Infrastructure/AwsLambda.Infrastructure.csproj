@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AwsLambda.Application\AwsLambda.Application.csproj" />
+    <ProjectReference Include="..\AwsLambda.Core.Shared\AwsLambda.Core.Shared.csproj" />
   </ItemGroup>
 
 </Project>

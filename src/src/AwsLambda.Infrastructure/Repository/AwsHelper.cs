@@ -2,7 +2,7 @@
 using Amazon.SecretsManager;
 using Amazon.SecretsManager.Model;
 using AwsLambda.Application.Interfaces;
-using AwsLambda.Core.Const;
+using AwsLambda.Core.Shared.Const;
 using Newtonsoft.Json.Linq;
 
 namespace AwsLambda.Infrastructure.Repository;

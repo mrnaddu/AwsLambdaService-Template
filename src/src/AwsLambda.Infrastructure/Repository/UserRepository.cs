@@ -1,5 +1,5 @@
 ﻿using AwsLambda.Application.Interfaces;
-using AwsLambda.Core.Const;
+using AwsLambda.Core.Shared.Const;
 using MongoDB.Bson;
 using MongoDB.Driver;
 

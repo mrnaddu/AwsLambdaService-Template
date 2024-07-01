@@ -1,4 +1,4 @@
-﻿namespace AwsLambda.Core.Const;
+﻿namespace AwsLambda.Core.Shared.Const;
 
 public static class AwsConst
 {

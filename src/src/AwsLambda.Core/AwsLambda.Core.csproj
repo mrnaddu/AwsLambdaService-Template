@@ -10,4 +10,8 @@
     <PackageReference Include="MongoDB.Bson" Version="2.27.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AwsLambda.Core.Shared\AwsLambda.Core.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

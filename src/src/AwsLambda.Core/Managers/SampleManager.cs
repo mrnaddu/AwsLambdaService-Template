@@ -1,4 +1,5 @@
 ﻿using AwsLambda.Core.Entities;
+using AwsLambda.Core.Exceptions;
 using AwsLambda.Core.RepositoryInterfaces;
 
 namespace AwsLambda.Core.Managers;
@@ -11,13 +12,16 @@ public class SampleManager
         this.sampleRepository = sampleRepository;
     }
 
-    public async Task<Sample> CreateAsync(Sample sample)
+    public async Task<Sample> CreateAsync(
+        string name,
+        int age,
+        string email)
     {
-        var exists = await sampleRepository.GetByNameAsync(sample.Name);
+        var exists = await sampleRepository.GetByNameAsync(name);
         if (exists != null)
         {
-            throw new Exception("Sample already exists");
+            throw new AlreadyExistException("Sample already exists");
         }
-        return new Sample(sample.Id, sample.Name, sample.Age, sample.Email);
+        return new Sample(name, age, email);
     }
 }

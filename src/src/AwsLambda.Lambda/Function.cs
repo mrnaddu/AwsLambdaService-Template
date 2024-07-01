@@ -1,7 +1,7 @@
 using Amazon.Lambda.Annotations;
 using Amazon.Lambda.Core;
-using AwsLambda.Core.Entities;
-using MongoDB.Bson;
+using AwsLambda.Application.Contracts.Dtos;
+using AwsLambda.Application.Contracts.ServiceInterfaces;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -10,81 +10,30 @@ namespace AwsLambda.Lambda;
 
 public class Functions
 {
-    private readonly ISampleRepository sampleRepository;
-    private readonly IUserRepository userRepository;
-    public Functions(
-        ISampleRepository sampleRepository,
-        IUserRepository userRepository)
+    private readonly ISampleAppService sampleAppService;
+
+    public Functions(ISampleAppService sampleAppService)
     {
-        this.sampleRepository = sampleRepository;
-        this.userRepository = userRepository;
+        this.sampleAppService = sampleAppService;
     }
 
     // RdsMysql
     [LambdaFunction]
-    public async Task<SampleResponseDto> GetSampleAsyncHandler(string id, ILambdaContext context)
+    public async Task<SampleDto> GetSampleAsyncHandler(string id, ILambdaContext context)
     {
-        SampleResponseDto sampleResponseDto = new();
-
         if (string.IsNullOrEmpty(id))
         {
             context.Logger.LogDebug($"Did NOT receive the valid request for sample.");
-
-            sampleResponseDto.Message = "Received Invalid Sample Id";
-
-            return sampleResponseDto;
+            return null;
         }
-
-        context.Logger.LogDebug($"Received the request with Sample Id {id}.");
-        Sample sample = await sampleRepository.GetByIdAsync(int.Parse(id));
-
-        context.Logger.LogDebug($"Sending the response for Sample Id {id}.");
-        sampleResponseDto = Mapper.GenerateSampleResponseDto(sample);
-        return sampleResponseDto;
+        return await sampleAppService.GetSampleAsync(int.Parse(id));
     }
 
     [LambdaFunction]
-    public async Task<int> CreateSampleAsyncHandler(Sample entity, ILambdaContext context)
+    public async Task<SampleDto> CreateSampleAsyncHandler(CreateUpdateSampleDto input, ILambdaContext context)
     {
-        context.Logger.LogDebug($"Received the request with Sample Id {entity.Id} to create new.");
-
-        int rows = await sampleRepository.AddAsync(entity);
-
-        context.Logger.LogDebug($"Sending the response for New Sample Id {entity.Id}.");
-        context.Logger.LogDebug($"inserted the new Sample and effected rows {rows}.");
-        return rows;
-    }
-
-    [LambdaFunction]
-    public async Task<IEnumerable<Sample>> GetAllSampleHandler(ILambdaContext context)
-    {
-        context.Logger.LogDebug($"Received the request for Get All Sample.");
-
-        var samplesList = await sampleRepository.GetAllAsync();
-        return samplesList;
-    }
-
-    [LambdaFunction]
-    public async Task<int> UpdateSampleHandler(Sample entity, ILambdaContext context)
-    {
-        context.Logger.LogDebug($"Received the request with Sample Id {entity.Id} to update.");
-
-        int rows = await sampleRepository.UpdateAsync(entity);
-
-        context.Logger.LogDebug($"Sending the response for New Sample Id {entity.Id}.");
-        context.Logger.LogDebug($"updated the Sample and effected rows {rows}.");
-        return rows;
-    }
-
-
-    // DocumentDb MongoDb 
-    [LambdaFunction]
-    public async Task<IEnumerable<BsonDocument>> GetAllUserHandler(ILambdaContext context)
-    {
-        context.Logger.LogDebug($"Received the request for Get All User.");
-
-        var usersList = await userRepository.GetAllUsers();
-        return usersList;
+        context.Logger.LogDebug($"Received the request with Sample to create new.");
+        return await sampleAppService.CreateSampleAsync(input);
     }
 }
 

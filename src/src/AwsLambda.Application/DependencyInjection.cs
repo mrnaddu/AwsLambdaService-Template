@@ -1,4 +1,6 @@
 ﻿using System.Reflection;
+using AwsLambda.Application.Contracts.ServiceInterfaces;
+using AwsLambda.Application.Services;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +13,8 @@ public static class DependencyInjection
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+        services.AddTransient<ISampleAppService, SampleAppService>();
 
         return services;
     }

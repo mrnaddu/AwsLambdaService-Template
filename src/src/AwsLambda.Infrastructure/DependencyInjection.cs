@@ -1,4 +1,5 @@
-﻿using AwsLambda.Infrastructure.Repository;
+﻿using AwsLambda.Core.RepositoryInterfaces;
+using AwsLambda.Infrastructure.Repository;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AwsLambda.Infrastructure;
@@ -9,7 +10,6 @@ public static class DependencyInjection
     {
         services.AddTransient<ISampleRepository, SampleRepository>();
         services.AddTransient<IUnitOfWork, UnitOfWork>();
-        services.AddTransient<IAwsAppService, AwsHelper>();
         services.AddTransient<IUserRepository, UserRepository>();
     }
 }

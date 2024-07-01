@@ -8,12 +8,10 @@ public class Sample
     public string Email { get; set; }
 
     public Sample(
-        int id,
         string name,
         int age,
         string email)
     {
-        Id = id;
         Name = name;
         Age = age;
         Email = email;

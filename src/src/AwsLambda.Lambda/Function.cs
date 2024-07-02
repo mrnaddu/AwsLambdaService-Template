@@ -19,20 +19,16 @@ public class Functions
 
     // RdsMysql
     [LambdaFunction]
-    public async Task<SampleDto> GetSampleAsyncHandler(string id, ILambdaContext context)
+    public async Task<SampleDto> GetSampleAsyncHandler(int id, ILambdaContext context)
     {
-        if (string.IsNullOrEmpty(id))
-        {
-            context.Logger.LogDebug($"Did NOT receive the valid request for sample.");
-            return null;
-        }
-        return await sampleAppService.GetSampleAsync(int.Parse(id));
+        context.Logger.LogDebug($"Received the request with Sample finding by Id: {id}");
+        return await sampleAppService.GetSampleAsync(id);
     }
 
     [LambdaFunction]
     public async Task<SampleDto> CreateSampleAsyncHandler(CreateUpdateSampleDto input, ILambdaContext context)
     {
-        context.Logger.LogDebug($"Received the request with Sample to create new.");
+        context.Logger.LogDebug($"Received the request with Sample to create new one: {input}");
         return await sampleAppService.CreateSampleAsync(input);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Amazon.Lambda.Annotations;
-using AwsLambda.Application.Contracts.ServiceInterfaces;
-using AwsLambda.Application.Services;
+using AwsLambda.Application;
+using AwsLambda.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AwsLambda.Lambda;
@@ -10,6 +10,7 @@ public class DependencyInjection
 {
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddTransient<ISampleAppService, SampleAppService>();
+        services.AddApplication();
+        services.AddInfrastructure();
     }
 }

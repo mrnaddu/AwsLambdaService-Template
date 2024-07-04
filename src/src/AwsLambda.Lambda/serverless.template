@@ -14,8 +14,9 @@
         "CodeUri": ".",
         "MemorySize": 512,
         "Timeout": 30,
+        "Role": null,
         "Policies": [
-          "AWSLambdaBasicExecutionRole"
+          "AWSLambda_FullAccess"
         ],
         "PackageType": "Zip",
         "Handler": "AwsLambda.Lambda::AwsLambda.Lambda.Functions_GetSampleAsyncHandler_Generated::GetSampleAsyncHandler"
@@ -31,8 +32,9 @@
         "CodeUri": ".",
         "MemorySize": 512,
         "Timeout": 30,
+        "Role": null,
         "Policies": [
-          "AWSLambdaBasicExecutionRole"
+          "AWSLambda_FullAccess"
         ],
         "PackageType": "Zip",
         "Handler": "AwsLambda.Lambda::AwsLambda.Lambda.Functions_CreateSampleAsyncHandler_Generated::CreateSampleAsyncHandler"

@@ -17,7 +17,7 @@ public class Functions
         this.sampleAppService = sampleAppService;
     }
 
-    // RdsMysql
+    // RdsDb MysqlDb
     [LambdaFunction]
     public async Task<SampleDto> GetSampleAsyncHandler(int id, ILambdaContext context)
     {
@@ -25,6 +25,14 @@ public class Functions
         return await sampleAppService.GetSampleAsync(id);
     }
 
+    [LambdaFunction]
+    public async Task<SampleDto> CreateSampleAsyncHandler(CreateUpdateSampleDto input, ILambdaContext context)
+    {
+        context.Logger.LogDebug($"Received the request with Sample to create new one: {input}");
+        return await sampleAppService.CreateSampleAsync(input);
+    }
+
+    // DocDb DynamoDb
     [LambdaFunction]
     public async Task<SampleDto> CreateSampleAsyncHandler(CreateUpdateSampleDto input, ILambdaContext context)
     {

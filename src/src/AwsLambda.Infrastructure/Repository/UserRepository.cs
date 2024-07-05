@@ -8,12 +8,20 @@ namespace AwsLambda.Infrastructure.Repository;
 
 public class UserRepository : IUserRepository
 {
-    public async Task<IEnumerable<BsonDocument>> GetAllUsers()
+    public async Task<IEnumerable<BsonDocument>> GetAllUsersAsync()
     {
         var mongoClient = new MongoClient(AwsHelper.GetDocumentDatabaseConnectionString());
         var collection = mongoClient.GetDatabase(DocumentDbConst.DocumentCollection).GetCollection<BsonDocument>(DocumentDbConst.UsersDbTable);
         var filter = Builders<BsonDocument>.Filter.Empty;
         var documents = await collection.Find(filter).ToListAsync();
         return documents;
+    }
+
+    public async Task<BsonDocument> GetUserEmailAsync(string email)
+    {
+        var mongoClient = new MongoClient(AwsHelper.GetDocumentDatabaseConnectionString());
+        var collection = mongoClient.GetDatabase(DocumentDbConst.DocumentCollection).GetCollection<BsonDocument>(DocumentDbConst.UsersDbTable);
+        var filter = Builders<BsonDocument>.Filter.Eq("email", email);
+        return await collection.Find(filter).FirstOrDefaultAsync();
     }
 }

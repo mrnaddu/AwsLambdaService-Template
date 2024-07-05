@@ -16,6 +16,7 @@ public static class DependencyInjection
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         services.AddTransient<ISampleAppService, SampleAppService>();
+        services.AddTransient<IUserAppService, UserAppService>();
         services.AddTransient<SampleManager>();
 
         return services;
